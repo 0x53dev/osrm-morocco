@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t="interactiveobject/osrm-morocco-docker" .
+docker build -t="ioteam/osrm-morocco-docker" .
