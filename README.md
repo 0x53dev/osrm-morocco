@@ -34,7 +34,15 @@ Explanation:
 - `osrm` - go via entrypoint script, w/o osrm keyword - classic mode
 - `label` - your label of OSM data
 
+Example :
+```
+curl 'http://192.168.99.100:5000/trip/v1/driving/-7.604114303893213,33.564246042507165;-7.5032717430179545,33.55778473602738.json?steps=true&overview=simplified&geometries=geojson'
+
+```
+
+## Author
+[Interactive Object](https://interactive-object.com) 
+
 
 ## License
-
-[Interactive Object](https://interactive-object.com) The content of this project itself is licensed under the Creative Commons Attribution 3.0 license, and the underlying source code used to format and display that content is licensed under the MIT license.
+The content of this project itself is licensed under the Creative Commons Attribution 3.0 license, and the underlying source code used to format and display that content is licensed under the MIT license.
