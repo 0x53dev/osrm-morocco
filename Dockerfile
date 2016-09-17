@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM node:6.6.0
 MAINTAINER Younes Benaomar <younes@interactive-object.com>
 
 # Let the container know that there is no TTY
@@ -44,6 +44,8 @@ RUN curl --silent -L https://github.com/Project-OSRM/osrm-backend/archive/v5.3.2
 RUN apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
+
+RUN npm install osrm -g
 # Publish --------------------------------
 
 COPY docker-entrypoint.sh /
