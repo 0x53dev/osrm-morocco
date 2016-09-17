@@ -39,13 +39,17 @@ RUN curl --silent -L https://github.com/Project-OSRM/osrm-backend/archive/v5.3.2
  && echo "disk=/tmp/stxxl,25000,syscall" > .stxxl \
  && rm -rf /osrm-src
 
+
+RUN pkg-config libosrm --variable=prefix 
+RUN git clone https://github.com/Project-OSRM/node-osrm.git && npm install --build-from-source -g
+
+
 # Cleanup --------------------------------
 
 RUN apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
 
-RUN npm install osrm -g
 # Publish --------------------------------
 
 COPY docker-entrypoint.sh /
