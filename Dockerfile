@@ -24,10 +24,10 @@ RUN apt-get -y update && apt-get install -y \
     libluajit-5.1-dev \
     pkg-config
 
-RUN mkdir -p /osrm-build
+RUN mkdir -p /osrm
 COPY osrm-data /osrm-data
 
-WORKDIR /osrm-build
+WORKDIR /opt/osrm
 
 RUN curl --silent -L https://github.com/Project-OSRM/osrm-backend/archive/v5.3.2.tar.gz -o v5.3.2.tar.gz \
  && tar xzf v5.3.2.tar.gz \
@@ -40,7 +40,12 @@ RUN curl --silent -L https://github.com/Project-OSRM/osrm-backend/archive/v5.3.2
  && rm -rf /osrm-src
 
 
-RUN pkg-config libosrm --variable=prefix 
+RUN export PATH=/opt/osrm/bin:${PATH}
+RUN export PKG_CONFIG_PATH=/opt/osrm/lib/pkgconfig
+RUN pkg-config libosrm --variable=prefix
+# if boost headers are in a custom location give a hint about that
+# here we assume the are in `/opt/boost`
+#RUN export CXXFLAGS="-I/opt/boost/include"
 RUN git clone https://github.com/Project-OSRM/node-osrm.git && npm install --build-from-source -g
 
 

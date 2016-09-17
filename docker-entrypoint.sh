@@ -11,9 +11,10 @@ if [ "$1" = 'osrm' ]; then
   #./osrm-extract $DATA_PATH/morocco-latest.osm.pbf
   #./osrm-contract $DATA_PATH/morocco-latest.osrm
 
-  #./osrm-routed $DATA_PATH/morocco-latest.osrm --max-table-size 8000 &
-  
   ./osrm-datastore $DATA_PATH/osrm-data/morocco-latest.osrm
+  
+  ./osrm-routed $DATA_PATH/morocco-latest.osrm --max-table-size 8000 &
+
   
   child=$!
   wait "$child"
