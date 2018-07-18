@@ -11,4 +11,4 @@ FROM osrm/osrm-backend
 WORKDIR /data/
 EXPOSE 5000
 COPY --from=builder /data .
-CMD ["osrm-routed", "--max-table-size 8000", "--algorithm ch /data/morocco-latest.osrm]
+CMD ["osrm-routed", "--max-table-size 8000", "--algorithm ch /data/morocco-latest.osrm"]
